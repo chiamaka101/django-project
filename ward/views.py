@@ -15,10 +15,10 @@ def home(request):
         )
         return redirect('home')
     patients = Patient.objects.all()
-    context = {'patients': patients}  # 👈 changed to 'patients'
-    return render(request, 'home.html', context)  # 👈 added 'ward/'
+    context = {'patients': patients}  
+    return render(request, 'home.html', context)  
 
-def discharge_patient(request, pk):  # 👈 changed patient_pk to pk
+def discharge_patient(request, pk):  
     patient = get_object_or_404(Patient, pk=pk)
     patient.delete()
     return redirect('home')
